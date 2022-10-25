@@ -1,19 +1,7 @@
-# vue_test
+# vue_Advanced
 
-## Project setup
-```
-npm install
-```
+## Bulletin Board
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Vuex, Vue-router, axios, RestAPI를 활용한 게시판 제작
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 서버의 게시판 데이터는 Vuex로 관리
