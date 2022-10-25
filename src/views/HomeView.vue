@@ -9,15 +9,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in $store.state.data" :key="index">
+        <tr v-for="(item, index) in storeData" :key="index">
           <th>
-            <router-link :id="item.id" :to="`/${item.id}`">{{ $store.state.data[index].title }}</router-link>
+            <router-link :id="item.id" :to="`/${item.id}`">{{ item[index].title }}</router-link>
           </th>
           <th>
-            {{ $store.state.data[index].author }}
+            {{ item[index].author }}
           </th>
           <th>
-            {{ $store.state.data[index].content }}
+            {{ item[index].content }}
           </th>
         </tr>
       </tbody>
@@ -40,6 +40,11 @@ export default {
 
   },
   //computed()사용해서 변수 사용 (집가서 해보는 걸로)
+  computed:{
+    storeData(){
+      return this.$store.state.data
+    }
+  }
 }
 </script>
 
