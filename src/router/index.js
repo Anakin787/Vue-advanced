@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import detail from '../views/detail.vue'
 import create from '../views/create.vue'
+import modify from '../views/modify.vue'
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,10 @@ const routes = [
   {
     path: '/:id',
     component: detail
+  },
+  {
+    path: '/mod/:id',
+    component: modify
   },
 
 

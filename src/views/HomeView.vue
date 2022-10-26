@@ -3,6 +3,7 @@
     <table>
       <thead>
         <tr>
+          <th>ID</th>
           <th>Title</th>
           <th>Author</th>
           <th>content</th>
@@ -11,20 +12,23 @@
       <tbody>
         <tr v-for="(item, index) in storeData" :key="index">
           <th>
-            <router-link :id="item.id" :to="`/${item.id}`">{{ item[index].title }}</router-link>
+            {{ storeData[index].id }}
           </th>
           <th>
-            {{ item[index].author }}
+            <router-link :to="`/${item.id}`">{{ storeData[index].title }}</router-link>
           </th>
           <th>
-            {{ item[index].content }}
+            {{ storeData[index].author }}
+          </th>
+          <th>
+            {{ storeData[index].content }}
           </th>
         </tr>
       </tbody>
     </table>
 
     <router-link to="/new">
-      <p class="new">Create</p>
+      <p class="new">등록</p>
     </router-link>
 
   </div>
@@ -32,16 +36,12 @@
 
 <script>
 export default {
-  mounted() {
+  beforeMount() {
     this.$store.dispatch('getData')
   },
   name: 'HomeView',
-  components: {
-
-  },
-  //computed()사용해서 변수 사용 (집가서 해보는 걸로)
-  computed:{
-    storeData(){
+  computed: {
+    storeData() {
       return this.$store.state.data
     }
   }
