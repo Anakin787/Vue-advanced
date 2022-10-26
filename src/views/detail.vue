@@ -20,9 +20,10 @@
                 </tr>
             </tbody>
         </table>
+
         <router-link :to="`/mod/${$route.params.id}`"><button>수정</button></router-link>
         <router-link to="/"><button @click="del">삭제</button></router-link>
-        <button>댓글</button>
+        <router-link to="/comment"><button>댓글</button></router-link>
     </div>
 </template>
 
@@ -33,7 +34,7 @@ export default {
     },
     name: 'detail',
     computed: {
-        storeData(e) {//내가 누른게 배열의 몇번째 인지
+        storeData() {//내가 누른게 배열의 몇번째 인지
             return this.$store.state.data[this.$route.params.id - 1]
         }
     },

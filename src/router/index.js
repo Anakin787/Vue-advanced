@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import detail from '../views/detail.vue'
 import create from '../views/create.vue'
 import modify from '../views/modify.vue'
+import comment from '../views/comment.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,10 @@ const routes = [
   {
     path: '/mod/:id',
     component: modify
+  },
+  {
+    path: '/comment',
+    component: comment
   },
 
 
