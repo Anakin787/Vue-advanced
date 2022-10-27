@@ -1,7 +1,7 @@
 <template>
     <div>
         <table>
-            <thead>
+            <thead class="head">
                 <tr>
                     <th>Title</th>
                     <th>작성자</th>
@@ -21,34 +21,36 @@
             </tbody>
         </table><br>
         <table>
-            <thead>
+            <thead class="head">
                 <tr>
-                    <th>작성자</th>
-                    <th>내용</th>
+                    <th class="writer rightline">작성자</th>
+                    <th class="content">내용</th>
                 </tr>
             </thead>
             <tbody v-for="(item, index) in matchid()" :key="index">
                 <tr>
-                    <th>{{ item.author }}</th>
+                    <th class="rightline
+                    ">{{ item.author }}</th>
                     <th>{{ item.content }}</th>
                 </tr>
             </tbody>
         </table>
 
-        <div v-if="state == 1">
+        <div class="container" v-if="state == 1">
             <p style="font-size: 1.5rem; color: green;">Comment</p>
             <form @keyup.enter="upload">
                 <p class="inline">Author : </p><input class="text" type="text" v-model="list.author"
                     placeholder="작성자를 입력하세요">
-                <p class="inline mg">content : </p><input class="text" v-model="list.content" placeholder="댓글을 입력하세요">
-                <router-link class="inline" :to="`/${$route.params.id}`"><button class="btn"
-                        @click="uploadComment(list); state = 0">등록</button></router-link>
+                <p class="inline mg">Content : </p><input class="text" v-model="list.content" placeholder="댓글을 입력하세요">
+                <router-link class="inline margin" :to="`/${$route.params.id}`"><button style="height: 30px;"
+                        @click="uploadComment(list); state = 0">등록</button>
+                </router-link>
             </form>
         </div>
 
-        <router-link :to="`/mod/${$route.params.id}`"><button>수정</button></router-link>
-        <router-link to="/"><button @click="del">삭제</button></router-link>
-        <button @click="state = 1">댓글달기</button>
+        <router-link class="margin" :to="`/mod/${$route.params.id}`"><button>수정</button></router-link>
+        <router-link class="margin" to="/"><button @click="del">삭제</button></router-link>
+        <button class="margin" @click="state = 1">댓글달기</button>
     </div>
 </template>
 
@@ -56,7 +58,11 @@
 import axios from 'axios'
 
 export default {
-    created() {
+    // created() {
+    //     this.getData()
+    //     this.getCommentData()
+    // },
+    beforeMount() {
         this.getData()
         this.getCommentData()
     },
@@ -91,38 +97,66 @@ export default {
         getCommentData() {
             axios.get('http://192.168.70.212/comments/').then(a => { this.commentData = a.data })
         }
-
     },
 }
 </script>
 
 <style>
 table {
-    width: 100%;
-    border: 1px solid #444444;
+    width: 90%;
+    border: 2px solid #42b983;
     border-collapse: collapse;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.margin {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+p {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.head {
+    color: burlywood;
+    border-bottom: 3px double black;
+}
+
+.rightline {
+    border-right: 2px groove #42b983;
+}
+
+.writer {
+    width: 400px;
 }
 
 .inline {
     display: inline;
 }
 
-.mg {
-    margin-left: 10px;
-}
 
 button {
     width: 100px;
     height: 40px;
-    margin: 10px;
     background: #42b983;
-    border-radius: 15px;
     font-size: large;
+    cursor: pointer;
+    transition: all 0.5s;
+    border: none;
+}
+
+button:hover {
+    width: 150px;
+    color: ivory;
+    background: black;
 }
 
 th,
 td {
-    border: 1px solid #444444;
+    border: 1px dotted #444444;
     padding: 10px;
 }
 </style>

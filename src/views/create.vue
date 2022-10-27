@@ -1,12 +1,14 @@
 <template>
     <div>
-        <p style="font-size: 2rem; color: green;">Create</p>
-        <form @keyup.enter="upload">
-            <p>Title : </p><input type="text" v-model="list.title" placeholder="제목을 입력하세요">
-            <p>Author : </p><input class="text" type="text" v-model="list.author" placeholder="작성자를 입력하세요">
-            <p>content : </p><textarea class="text" v-model="list.content" placeholder="내용을 입력하세요"></textarea><br>
-            <router-link to="/"><button class="btn" @click="upload">등록</button></router-link>
-        </form>
+        <div class="container">
+            <p style="font-size: 2rem; color: green;">Create</p>
+            <form @keyup.enter="upload">
+                <p>Title</p><input class="text" type="text" v-model="list.title" placeholder="제목을 입력하세요">
+                <p>Author</p><input class="text" type="text" v-model="list.author" placeholder="작성자를 입력하세요">
+                <p>Content</p><input class="text" v-model="list.content" placeholder="내용을 입력하세요"><br>
+                <router-link to="/"><button @click="upload">등록</button></router-link>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -36,12 +38,6 @@ export default {
 </script>
 
 <style>
-body {
-    margin: 0;
-    text-align: center;
-    box-sizing: border-box;
-}
-
 p {
     font-size: large;
     font-weight: 600;
@@ -51,13 +47,5 @@ p {
     width: 200px;
     height: 20px;
     text-align: center;
-}
-
-.btn {
-    background: aliceblue;
-    border: 1px solid black;
-    border-radius: 5px;
-    font-size: large;
-
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <table>
-      <thead>
+      <thead class="head">
         <tr>
           <th>ID</th>
           <th>Title</th>
@@ -15,7 +15,7 @@
             {{ storeData[index].id }}
           </th>
           <th>
-            <router-link :to="`/${item.id}`">{{ storeData[index].title }}</router-link>
+            <router-link class="hover" :to="`/${item.id}`">{{ storeData[index].title }}</router-link>
           </th>
           <th>
             {{ storeData[index].author }}
@@ -28,7 +28,7 @@
     </table>
 
     <router-link to="/new">
-      <p class="new">등록</p>
+      <button style="border: 2px solid black;">등록</button>
     </router-link>
 
   </div>
@@ -50,26 +50,46 @@ export default {
 
 <style scoped>
 table {
-  width: 100%;
-  border: 1px solid #444444;
+  width: 90%;
+  margin: auto;
+  border: none;
   border-collapse: collapse;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 th,
 td {
-  border: 1px solid #444444;
+  border: 2px solid black;
   padding: 10px;
 }
 
-.new {
+.head {
+  color: burlywood;
+}
+
+.hover:hover {
+  color: #42b983;
+}
+
+button {
   display: inline-block;
   width: 100px;
-  height: 20px;
-  border: 1px solid black;
-  border-radius: 15px;
-  background: ivory;
+  height: 30px;
   color: #42b983;
-  font-size: medium;
-  margin-top: 10px;
+  background: ivory;
+  font-size: large;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+button:hover {
+  color: ivory;
+  background: #42b983;
 }
 </style>
