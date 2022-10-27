@@ -4,7 +4,7 @@
         <form @keyup.enter="upload">
             <p>Title : </p><input type="text" v-model="list.title" placeholder="제목을 입력하세요">
             <p>Author : </p><input type="text" v-model="list.author" placeholder="작성자를 입력하세요">
-            <p>content : </p><input class="tarea" v-model="list.content" placeholder="내용을 입력하세요"><br>
+            <p>content : </p><textarea class="tarea" v-model="list.content" placeholder="내용을 입력하세요"></textarea><br>
             <router-link to="/"><button class="btn" @click="upload">등록</button></router-link>
         </form>
     </div>
@@ -48,8 +48,9 @@ p {
 }
 
 .tarea {
-    width: 500px;
-    height: 200px;
+    width: 400px;
+    height: 100px;
+    text-align: center;
 }
 
 .btn {
