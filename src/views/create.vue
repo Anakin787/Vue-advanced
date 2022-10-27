@@ -3,8 +3,8 @@
         <p style="font-size: 2rem; color: green;">Create</p>
         <form @keyup.enter="upload">
             <p>Title : </p><input type="text" v-model="list.title" placeholder="제목을 입력하세요">
-            <p>Author : </p><input type="text" v-model="list.author" placeholder="작성자를 입력하세요">
-            <p>content : </p><textarea class="tarea" v-model="list.content" placeholder="내용을 입력하세요"></textarea><br>
+            <p>Author : </p><input class="text" type="text" v-model="list.author" placeholder="작성자를 입력하세요">
+            <p>content : </p><textarea class="text" v-model="list.content" placeholder="내용을 입력하세요"></textarea><br>
             <router-link to="/"><button class="btn" @click="upload">등록</button></router-link>
         </form>
     </div>
@@ -47,9 +47,9 @@ p {
     font-weight: 600;
 }
 
-.tarea {
-    width: 400px;
-    height: 100px;
+.text {
+    width: 200px;
+    height: 20px;
     text-align: center;
 }
 
