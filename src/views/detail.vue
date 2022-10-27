@@ -94,6 +94,7 @@ export default {
             const arr = this.storeCommentData.filter(this.storeCommentData.post_id == this.storeData.id)
             return arr
         }
+
     },
 }
 </script>
