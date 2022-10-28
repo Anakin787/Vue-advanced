@@ -6,7 +6,8 @@
                 <p>Title</p><input class="text" type="text" v-model="data.title" placeholder="제목을 입력하세요">
                 <p>Author</p><input class="text" type="text" v-model="data.author" placeholder="작성자를 입력하세요">
                 <p>Content</p><textarea class="text" v-model="data.content" placeholder="내용을 입력하세요"></textarea><br>
-                <router-link to="/"><button @click="updateData(data)">수정</button></router-link>
+                <router-link :to="`/${$route.params.id}`"><button @click="updateData(data)">수정</button>
+                </router-link>
             </form>
         </div>
     </div>
@@ -31,7 +32,6 @@ export default {
         getData() {
             axios.get(`http://192.168.70.212/posts/${this.$route.params.id}`).then(a => { this.data = a.data })
         },
-
     }
 }
 </script>

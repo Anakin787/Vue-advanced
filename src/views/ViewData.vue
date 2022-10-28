@@ -27,7 +27,7 @@
                     <th class="content">내용</th>
                 </tr>
             </thead>
-            <tbody v-for="(item, index) in matchid()" :key="index">
+            <tbody v-for="(item, index) in matchId()" :key="index">
                 <tr>
                     <th class="rightline
                     ">{{ item.author }}</th>
@@ -38,10 +38,11 @@
 
         <div class="container" v-if="state == 1">
             <p style="font-size: 1.5rem; color: green;">Comment</p>
-            <form @keyup.enter="upload">
+            <form @keyup.enter="uploadComment(list)">
                 <p class="inline">Author : </p><input class="text" type="text" v-model="list.author"
                     placeholder="작성자를 입력하세요">
-                <p class="inline mg">Content : </p><input class="text" v-model="list.content" placeholder="댓글을 입력하세요">
+                <p class="inline margin">Content : </p><input class="text" v-model="list.content"
+                    placeholder="댓글을 입력하세요">
                 <router-link class="inline margin" :to="`/${$route.params.id}`"><button style="height: 30px;"
                         @click="uploadComment(list); state = 0">등록</button>
                 </router-link>
@@ -83,7 +84,7 @@ export default {
         uploadComment(list) {
             axios.post('http://192.168.70.212/comments', list).then(() => this.$router.go(0))
         },
-        matchid() {
+        matchId() { //게시글과 댓글 일치
             const arr = this.commentData.filter(id => id.post_id == this.data.id)
             return arr
         },

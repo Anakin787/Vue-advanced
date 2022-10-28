@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import detail from '../views/detail.vue'
-import create from '../views/create.vue'
-import modify from '../views/modify.vue'
+import Home from '../views/HomePage.vue'
+import Detail from '../views/ViewData.vue'
+import Create from '../views/CreateNewList.vue'
+import Modify from '../views/ModifyList.vue'
 
 Vue.use(VueRouter)
 
@@ -11,19 +11,23 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: HomeView
+    name: 'Home',
+    component: Home
   },
   {
     path: '/new',
-    component: create
+    name: 'Create',
+    component: Create
   },
   {
     path: '/:id',
-    component: detail
+    name: 'Detail',
+    component: Detail
   },
   {
     path: '/mod/:id',
-    component: modify
+    name: 'Modify',
+    component: Modify
   },
 ]
 

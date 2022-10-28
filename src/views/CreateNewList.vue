@@ -33,7 +33,7 @@ export default {
     },
     methods: {
         upload() {
-            axios.post('http://192.168.70.212/posts', this.list).then(a => this.data.push(a.data))
+            axios.post('http://192.168.70.212/posts', this.list).then(a => this.data.push(a.data)).then(() => this.$router.go(0))
         }
     }
 }
