@@ -13,9 +13,10 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
-    beforeMount() {
+    mounted() {
         this.$store.dispatch('getData')
     },
     data() {
@@ -27,11 +28,12 @@ export default {
                 modified_at: new Date().toLocaleString(),
                 content: ''
             },
+            data: [],
         }
     },
     methods: {
         upload() {
-            this.$store.dispatch('postData', this.list)
+            axios.post('http://192.168.70.212/posts', this.list).then(a => this.data.push(a.data))
         }
     }
 }

@@ -18,9 +18,6 @@ export default new Vuex.Store({
     setCommentData(state, data) {
       state.commentData = data
     },
-    addData(state, data) {
-      state.data.push(data)
-    },
   },
   actions: { //ajax요청 - dispatch로
     getData(context) { //action에 추가한 파라미터는 대충 $store을 뜻함`
@@ -28,13 +25,6 @@ export default new Vuex.Store({
     },
     getCommentData(context) {
       axios.get('http://192.168.70.212/comments').then(a => context.commit('setCommentData', a.data))
-    },
-    postData(context, payload) {
-      context.commit('addData', payload); //입력한걸 받아 오고싶으면
-      axios.post('http://192.168.70.212/posts', payload).then(response => console.log(response)).catch(err => console.log(err))
-    },
-    delData(_, payload) {
-      axios.delete(`http://192.168.70.212/posts/${payload}`)
     },
   },
 

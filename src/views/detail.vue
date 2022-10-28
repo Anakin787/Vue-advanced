@@ -49,8 +49,8 @@
         </div>
 
         <router-link class="margin" :to="`/mod/${$route.params.id}`"><button>수정</button></router-link>
-        <router-link class="margin" to="/"><button @click="del">삭제</button></router-link>
-        <button class="margin" @click="state = 1">댓글달기</button>
+        <router-link class="margin" to="/"><button style="background: burlywood;" @click="del">삭제</button></router-link>
+        <button style="background: forestgreen;" class="margin" @click="state = 1">댓글달기</button>
     </div>
 </template>
 
@@ -58,11 +58,7 @@
 import axios from 'axios'
 
 export default {
-    // created() {
-    //     this.getData()
-    //     this.getCommentData()
-    // },
-    beforeMount() {
+    mounted() {
         this.getData()
         this.getCommentData()
     },
@@ -82,10 +78,10 @@ export default {
     name: 'detail',
     methods: {
         del() {
-            this.$store.dispatch('delData', this.$route.params.id)
+            axios.delete(`http://192.168.70.212/posts/${this.$route.params.id}`)
         },
         uploadComment(list) {
-            axios.post('http://192.168.70.212/comments', list)
+            axios.post('http://192.168.70.212/comments', list).then(() => this.$router.go(0))
         },
         matchid() {
             const arr = this.commentData.filter(id => id.post_id == this.data.id)
@@ -151,7 +147,7 @@ button {
 button:hover {
     width: 150px;
     color: ivory;
-    background: black;
+    background: blueviolet;
 }
 
 th,
