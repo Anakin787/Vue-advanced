@@ -59,10 +59,7 @@
 import axios from 'axios'
 
 export default {
-    mounted() {
-        this.getData()
-        this.getCommentData()
-    },
+    name: 'detail',
     data() {
         return {
             list: {
@@ -76,7 +73,10 @@ export default {
             state: 0,
         }
     },
-    name: 'detail',
+    mounted() {
+        this.getData()
+        this.getCommentData()
+    },
     methods: {
         del() {
             axios.delete(`http://192.168.70.212/posts/${this.$route.params.id}`)
@@ -93,7 +93,7 @@ export default {
         },
         getCommentData() {
             axios.get('http://192.168.70.212/comments/').then(a => { this.commentData = a.data })
-        }
+        },
     },
 }
 </script>

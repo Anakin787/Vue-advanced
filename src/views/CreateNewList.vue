@@ -16,9 +16,6 @@
 import axios from 'axios'
 
 export default {
-    mounted() {
-        this.$store.dispatch('getData')
-    },
     data() {
         return {
             list: {
@@ -30,6 +27,9 @@ export default {
             },
             data: [],
         }
+    },
+    mounted() {
+        this.$store.dispatch('getData')
     },
     methods: {
         upload() {

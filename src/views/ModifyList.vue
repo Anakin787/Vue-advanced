@@ -17,13 +17,13 @@
 import axios from 'axios'
 export default {
     name: 'modify',
-    mounted() {
-        this.getData()
-    },
     data() {
         return {
             data: [],
         }
+    },
+    mounted() {
+        this.getData()
     },
     methods: {
         updateData(payload) {
@@ -32,7 +32,7 @@ export default {
         getData() {
             axios.get(`http://192.168.70.212/posts/${this.$route.params.id}`).then(a => { this.data = a.data })
         },
-    }
+    },
 }
 </script>
 

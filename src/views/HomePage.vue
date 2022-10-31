@@ -36,15 +36,15 @@
 
 <script>
 export default {
-  beforeMount() {
-    this.$store.dispatch('getData')
-  },
   name: 'HomeView',
   computed: {
     storeData() {
       return this.$store.state.data
     }
-  }
+  },
+  beforeMount() {
+    this.$store.dispatch('getData')
+  },
 }
 </script>
 
